@@ -8,13 +8,18 @@
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
     zen-browser.url = "github:0xc000022070/zen-browser-flake";
-    notion-desktop.url =  "github:heytcass/notion-mac-flake";
+    zen-browser.inputs.nixpkgs.follows = "nixpkgs";
+
     spicetify-nix.url = "github:Gerg-L/spicetify-nix";
+    spicetify-nix.inputs.nixpkgs.follows = "nixpkgs";
 
     hyprland.url = "github:hyprwm/Hyprland";
+
     stylix.url =  "github:nix-community/stylix/release-25.11";
     stylix.inputs.nixpkgs.follows = "nixpkgs";
-    pomodoro.url = "github:Esteban528/pomodoro";
+
+    oxicord.url = "github:linuxmobile/oxicord";
+    oxicord.inputs.nixpkgs.follows = "nixpkgs-unstable";
   };
 
   outputs = {nixpkgs, nixpkgs-unstable, home-manager, spicetify-nix, stylix, ... }@inputs:

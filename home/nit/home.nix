@@ -7,16 +7,18 @@
         ./hypr/hyprland/default.nix
         ./hypr/hyprlock/default.nix
         ./vscodium/default.nix
+        ./nvim/default.nix
     ];
+
     home.username = "nit";
     home.homeDirectory = "/home/nit";
-    home.stateVersion = "25.05";
-    
+    home.stateVersion = "25.11";
+
     gtk = {
         enable = true;
         cursorTheme.package = pkgs.bibata-cursors;
-        cursorTheme.name = "Bibata-Modern-Ice";
-        iconTheme.package = pkgs.catppuccin-papirus-folders;
+        cursorTheme.name = "Bibata-Original-Classic";
+        iconTheme.package = pkgs.papirus-icon-theme.override { color = "pink"; };
         iconTheme.name = "Papirus-Dark";
     };
 
@@ -31,7 +33,7 @@
         polarity = "dark";
     };
 
-    #home-manager.users.username.services.kdeconnect.enable = true;
+    #home-manager.users.nit.services.kdeconnect.enable = true;
 
     programs.home-manager.enable = true;
 }

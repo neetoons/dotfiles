@@ -1,4 +1,4 @@
-# Nit's NixOS configuration v24.05
+# Nit's NixOS configuration v25.11
 
 ```bash
 git clone https://github.com/neetoons/nixos-nit.git
