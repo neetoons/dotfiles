@@ -1,4 +1,4 @@
-{ inputs, pkgs-unstable, pkgs, ... }:
+{ inputs, pkgs, ... }:
 {
     imports = [
         ./pkgs/packages.nix

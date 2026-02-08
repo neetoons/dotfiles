@@ -1,8 +1,14 @@
+{ pkgs, ...}:
 {
     # Bootloader
-    boot.loader.grub.enable = true;
-    boot.loader.grub.device = "/dev/sda";
-    #boot.loader.grub.useOSProber = true;
+    boot.loader.grub = {
+      enable = true;
+      device = "/dev/sda";
+      theme = pkgs.catppuccin-grub;
+      #theme = pkgs.catppuccin-grub.override {
+      #  flavor = "mocha";
+      #};
+    };
 
     # Automatic updating
     system.autoUpgrade.enable = true;
@@ -15,7 +21,7 @@
     nix.settings.auto-optimise-store = true;
     nix.gc = {
         automatic = true;
-        dates = "weekly";
+        dates = "daily";
         options = "--delete-older-than 1d";
     };
 

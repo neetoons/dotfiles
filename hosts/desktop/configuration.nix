@@ -2,18 +2,20 @@
   #spicePkgs = inputs.spicetify-nix.legacyPackages.${pkgs.stdenv.system};
 #in
 {
+
     imports = [
-        
+
         #configuration
         ./hardware-configuration.nix
         ./modules/timers.nix
+        ./modules/sddm.nix
         ./modules/wayland.nix
         ./modules/audio.nix
         ./modules/disk.nix
         ./modules/enviroment.nix
         ./modules/fonts.nix
         ./modules/file-manager.nix
-        
+
         #programs
         ./modules/programs/android/default.nix
         #./modules/programs/ollama/default.nix
@@ -35,7 +37,8 @@
     programs.dconf.enable = true;
     # flakes
     nix.settings.experimental-features = [ "nix-command" "flakes" ];
-	
+    nix.gc.automatic = true;
+    nix.settings.auto-optimise-store = true;
 
     time.timeZone = "America/Caracas";
     i18n.defaultLocale = "en_US.UTF-8";
@@ -54,6 +57,71 @@
 
     programs.ydotool.enable = true;
     security.rtkit.enable = true;
+
+# tibia
+programs.nix-ld.enable = true;
+programs.nix-ld.libraries = with pkgs; [
+    openssl
+    kdePackages.wrapQtAppsHook
+    kdePackages.qtwayland
+    kdePackages.qtbase
+    kdePackages.qtdeclarative
+    kdePackages.wayland
+    xorg.libXdamage
+    xorg.libXcomposite
+    xorg.libX11
+    xorg.libXext
+    xorg.libXcursor
+    xorg.libXinerama
+    xorg.libXrender
+    xorg.libxcb
+    xorg.libXrandr
+    xorg.libXfixes
+    xorg.libXtst
+    xorg.libxkbfile
+    xorg.libXmu
+    xorg.libXpm
+    xorg.libXaw
+    libxcb-wm
+    libxcb-image
+    libxcb-keysyms
+    libxcb-render-util
+    libxkbcommon
+    libpulseaudio
+    libxml2_13
+    libxcrypt-legacy
+    libkrb5
+    libuuid
+    libevent
+    libGL
+    libpng
+    libxslt
+    libdrm
+    keyutils
+    icu
+    mesa
+    udev
+    alsa-lib
+    expat
+    dbus
+    fontconfig
+    freetype
+    glib
+    zlib
+    nss
+    nspr
+    libxcrypt-legacy
+    sqlite
+    zlib
+    xz
+    brotli
+];
+
+environment.shellAliases = {
+  tibiago = "LD_LIBRARY_PATH=\"/home/nit/.local/share/CipSoft GmbH/Tibia/packages/Tibia/bin/lib:/home/nit/.local/share/CipSoft GmbH/Tibia/packages/Tibia/lib:$NIX_LD_LIBRARY_PATH\" \"/home/nit/.local/share/CipSoft GmbH/Tibia/packages/Tibia/bin/client\"";
+};
+
+
 
   security = {
     # If enabled, pam_wallet will attempt to automatically unlock the user’s default KDE wallet upon login.

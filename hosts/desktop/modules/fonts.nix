@@ -6,7 +6,10 @@
         nerd-fonts.iosevka
         nerd-fonts.hack
         nerd-fonts.jetbrains-mono
+        symbola
+        unifont
         inter
+        font-awesome
         noto-fonts-cjk-sans
         noto-fonts-color-emoji
         liberation_ttf

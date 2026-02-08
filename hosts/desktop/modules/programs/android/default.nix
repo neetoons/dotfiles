@@ -1,9 +1,5 @@
 {pkgs, ...}:
 {
-	  #virtualisation.waydroid.enable = true;
-    programs.adb.enable = true;
-    environment.systemPackages =  [ pkgs.scrcpy ];
+    #virtualisation.waydroid.enable = true;
+    environment.systemPackages =  [ pkgs.scrcpy pkgs.android-tools];
 }
-
-
-

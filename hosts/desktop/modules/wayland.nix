@@ -8,16 +8,16 @@ in
         enable = true;
         package = hyprlandPkgs.hyprland;
         portalPackage = hyprlandPkgs.xdg-desktop-portal-hyprland;
-        withUWSM = true;
+        #withUWSM = true;
         xwayland.enable = true;
     };
 
-     services.displayManager = {
-        enable = true;
-        sddm.wayland.enable = true;
-        sddm.enable = true;
-        defaultSession = "hyprland-uwsm";
-     };
+     #services.displayManager = {
+     #   enable = true;
+     #   sddm.wayland.enable = true;
+     #   sddm.enable = true;
+     #   defaultSession = "hyprland";
+     #};
 
     xdg.portal = {
         enable = true;
@@ -28,11 +28,13 @@ environment.systemPackages = with pkgs; [
 # --- Entorno de Escritorio y Complementos (Wayland/Sway) ---
     xdg-desktop-portal # Implementa las API de Freedesktop para aplicaciones aisladas (necesario en Wayland)
     swaybg # Utilidad para establecer el fondo de pantalla en Wayland
+    swww
+    waypaper # Wallpaper manager
     eww # Extensible Widget Wrapper, framework para crear barras, menús y widgets personalizados
     rofi # Lanzador de aplicaciones, selector de ventanas y menús dinámicos compatible con Wayland
     dunst # Daemon de notificaciones ligero y minimalista
     libnotify # Biblioteca para enviar notificaciones de escritorio
-
+    wlogout # wlogout is a logout menu for wayland environments.
 # --- Herramientas de Terminal y Clipboard ---
     kitty # Emulador de terminal rápido y rico en funciones
     cliphist # Herramienta de historial de portapapeles para Wayland
@@ -49,5 +51,34 @@ environment.systemPackages = with pkgs; [
     gammastep # Herramienta para ajustar la temperatura de color de la pantalla según la hora del día (similar a Redshift/F.lux)
     ];
 
-  hardware.graphics.enable32Bit = true;
+  services.xserver.videoDrivers = [ "modesetting" ];
+
+  hardware.graphics = {
+    enable32Bit = true;
+    enable = true;
+    extraPackages = with pkgs; [
+      # Required for modern Intel GPUs (Xe iGPU and ARC)
+      intel-media-driver     # VA-API (iHD) userspace
+      vpl-gpu-rt             # oneVPL (QSV) runtime
+
+      # Optional (compute / tooling):
+      #intel-compute-runtime  # OpenCL (NEO) + Level Zero for Arc/Xe
+      # NOTE: 'intel-ocl' also exists as a legacy package; not recommended for Arc/Xe.
+      # libvdpau-va-gl       # Only if you must run VDPAU-only apps
+    ];
+  };
+
+  environment.sessionVariables = {
+    LIBVA_DRIVER_NAME = "iHD";     # Prefer the modern iHD backend
+    # VDPAU_DRIVER = "va_gl";      # Only if using libvdpau-va-gl
+  };
+
+  # Habilitar el servicio de almacenamiento seguro
+  services.gnome.gnome-keyring.enable = true;
+
+  # Asegurar que se desbloquee al iniciar sesión
+  security.pam.services.login.enableGnomeKeyring = true;
+
+  # Necesario para que las apps encuentren el servicio en Wayland/Hyprland
+  services.dbus.enable = true;
 }
