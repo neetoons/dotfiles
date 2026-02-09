@@ -5,10 +5,12 @@
         thunar-archive-plugin
         thunar-volman
     ];
-    programs.xfconf.enable = true;
+    environment.systemPackages = with pkgs.xfce; [
+        thunar-archive-plugin
+        thunar-volman
+    ];
 
-    services.gvfs.enable = true; # Mount, trash, and other functionalities
+    services.gvfs.enable = true;
     services.tumbler.enable = true;
-
     xdg.portal.config.preferred."org.freedesktop.impl.portal.FileChooser" = "thunar";
 }

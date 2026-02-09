@@ -43,6 +43,7 @@ environment.systemPackages = with pkgs; [
 # --- Captura de Pantalla y Manipulación de Imágenes (Wayland) ---
     grim # Utilidad para tomar capturas de pantalla en Wayland
     slurp # Utilidad para seleccionar una región rectangular de la pantalla en Wayland
+    satty # edicion de captura
 
 # --- Audio, Media y Utilidades de Red ---
     networkmanagerapplet # Applet para gestionar la red (Wi-Fi, Ethernet, VPNs)

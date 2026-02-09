@@ -54,7 +54,6 @@
         LC_TIME = "es_VE.UTF-8";
     };
 
-
     programs.ydotool.enable = true;
     security.rtkit.enable = true;
 

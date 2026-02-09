@@ -19,7 +19,6 @@ in
         gnome-decoder
         gnome-sound-recorder #reco
         gnome-keyring
-        gnome-obfuscate
         gnome-solanum # Aplicación de temporizador Pomodoro para gestionar el tiempo
 
 
@@ -89,6 +88,7 @@ in
         ##AppFlowy
         kdePackages.kdenlive # Editor de video no lineal avanzado
         #obs-studio # Software libre y de código abierto para grabación de video y transmisión en vivo
+        gh
         vlc # Reproductor multimedia altamente compatible
         ffmpeg # Marco multimedia para procesar, convertir y transmitir audio/video
         yt-dlp # Descargador de videos de YouTube y otros sitios (sucesor de youtube-dl)
@@ -138,10 +138,13 @@ in
         #aegyptus # Subtitulador
 
 ## --- Utilidades de Sistema y Red (Archivos, Terminal, Monitoreo) ---
-        ranger # Administrador de archivos de consola con atajos de teclado al estilo Vi
+        #ranger # Administrador de archivos de consola con atajos de teclado al estilo Vi
+        yazi
         p7zip # Utilidad para comprimir y descomprimir archivos en formato 7z
         zip # Utilidad de línea de comandos para crear archivos comprimidos .zip
         unzip # Utilidad de línea de comandos para extraer archivos .zip
+        cava
+        zellij
         peazip
         #rclone-ui
         rclone # Herramienta de sincronización de archivos con servicios de almacenamiento en la nube
@@ -155,8 +158,11 @@ in
         wget # Utilidad de línea de comandos para descargar archivos desde la web
         fzf # Buscador difuso (fuzzy finder) de línea de comandos
         fastfetch # Herramienta de línea de comandos para mostrar información del sistema y el logo de la distribución
+        disfetch
         file-roller # Archivador de archivos (comprime/descomprime) para el escritorio GNOME
         qdirstat # Herramienta gráfica para visualizar el uso del disco
+        eza
+        fd
         #guiscrcpy # Interfaz gráfica para scrcpy (controlar y ver Android en el PC)
 
 ## --- Redes y Conectividad (Navegadores, Compartición, P2P) ---
