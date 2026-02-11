@@ -4,7 +4,6 @@
         ./pkgs/packages.nix
         ./spicetify/default.nix
         ./hypr/hypridle/default.nix
-        ./hypr/hyprland/default.nix
         ./hypr/hyprlock/default.nix
         ./vscodium/default.nix
         ./nvim/default.nix

@@ -102,15 +102,15 @@ in
         #ferdium # Cliente de mensajería que consolida múltiples servicios (WhatsApp, Telegram, etc.)
         (callPackage ./ferdium/default.nix {})
        #discord
-        vesktop # Cliente de escritorio alternativo para Discord, con más funciones y personalización
-        telegram-desktop # Cliente oficial de escritorio para la aplicación de mensajería Telegram
-        #thunderbird # Cliente de correo electrónico, calendario y noticias
-        #fractal # Cliente de escritorio para la red de comunicación Matrix
-        obsidian # Editor de notas basado en Markdown que utiliza un enfoque de grafo/red
-        ##cinny-desktop # Cliente de escritorio para la red de comunicación descentralizada Matrix
-        ##zapzap # Cliente de escritorio no oficial para WhatsApp
-        #smile # emoji picker
-        sticky-notes # Aplicación de notas adhesivas para el escritorio
+       vesktop # Cliente de escritorio alternativo para Discord, con más funciones y personalización
+       telegram-desktop # Cliente oficial de escritorio para la aplicación de mensajería Telegram
+       #thunderbird # Cliente de correo electrónico, calendario y noticias
+       #fractal # Cliente de escritorio para la red de comunicación Matrix
+       obsidian # Editor de notas basado en Markdown que utiliza un enfoque de grafo/red
+       ##cinny-desktop # Cliente de escritorio para la red de comunicación descentralizada Matrix
+       ##zapzap # Cliente de escritorio no oficial para WhatsApp
+       #smile # emoji picker
+       sticky-notes # Aplicación de notas adhesivas para el escritorio
 
 ## --- Ofimática y Lectura (Documentos, Ebooks, RSS) ---
         #onlyoffice-desktopeditors # Suite ofimática con funciones de colaboración

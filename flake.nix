@@ -2,10 +2,19 @@
   description = "Nit's NixOS configuration";
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.11";
-    nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
 
     home-manager = {
         url = "github:nix-community/home-manager/release-25.11";
+        inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    niri = {
+        url = "github:niri-wm/niri";
+        inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    stylix = {
+        url =  "github:nix-community/stylix/release-25.11";
         inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -19,16 +28,6 @@
         inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    hyprland = {
-        url = "github:hyprwm/Hyprland";
-        inputs.nixpkgs.follows = "nixpkgs-unstable";
-    };
-
-    stylix = {
-        url =  "github:nix-community/stylix/release-25.11";
-        inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     oxicord = {
         url = "github:linuxmobile/oxicord";
         inputs.nixpkgs.follows = "nixpkgs";
@@ -36,11 +35,7 @@
 
   };
 
-  outputs = {nixpkgs, home-manager, spicetify-nix, stylix, ... }@inputs:
-  let
-    system = "x86_64-linux";
-    spicetify = spicetify-nix.lib.mkSpicetify;
-  in
+  outputs = {nixpkgs, home-manager, ... }@inputs:
   {
     nixosConfigurations = {
       nixos = nixpkgs.lib.nixosSystem {
@@ -53,8 +48,8 @@
             home-manager = {
               users.nit = {
                   imports = [
-                    spicetify-nix.homeManagerModules.default
-                    stylix.homeModules.stylix
+                    inputs.spicetify-nix.homeManagerModules.default
+                    inputs.stylix.homeModules.stylix
                     ./home/nit/home.nix
                   ];
                 };

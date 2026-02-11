@@ -46,7 +46,7 @@ in
     # Usamos la versión de SDDM basada en Qt6 para compatibilidad total
     sddm.package = pkgs.kdePackages.sddm;
     sddm.wayland.enable = true;
-    defaultSession = "hyprland";
+    defaultSession = "niri";
     sddm.extraPackages = [ pkgs.sddm-astronaut ];
   };
 
