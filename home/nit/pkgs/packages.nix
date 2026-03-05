@@ -7,12 +7,12 @@ in
     home.packages = with pkgs; [
         inputs.zen-browser.packages."${system}".default
         inputs.oxicord.packages.${system}.default
-
+        inputs.elyprismlauncher.packages.${system}.default
 ## --- PANTHEON SUITE
         pantheon.elementary-calculator
 
 ## --- GNOME SUITE
-        gnome-calendar
+        #gnome-calendar
         gnome-logs
         gnome-clocks
         gnome-font-viewer
@@ -20,12 +20,17 @@ in
         gnome-sound-recorder #reco
         gnome-keyring
         gnome-solanum # Aplicación de temporizador Pomodoro para gestionar el tiempo
+        handbrake
+        lazygit
+        #upscayl
+        #mangohud
+        #protonup-qt
 
+        lmstudio # ia
 
 ## --- Desarrollo y Programación (IDEs, Editores de Código, Herramientas de Compilación) ---
         #zed-editor # Editor de texto y código de alto rendimiento, enfocado en el desarrollo
-        ungoogled-chromium
-        geany
+        #ungoogled-chromium
         yarn
         pnpm
         nodejs_latest # Entorno de ejecución de JavaScript del lado del servidor (versión 24)
@@ -33,15 +38,14 @@ in
         typescript # Lenguaje de programación, superset de JavaScript que añade tipado estático
         python310 # Lenguaje de programación Python (versión 3.10)
         ##android-studio # Entorno de desarrollo integrado (IDE) para crear aplicaciones Android
-        pkg-config # Utilidad para ayudar a compilar programas especificando banderas de compilación para bibliotecas
-        cmake # Herramienta de gestión de compilación y construcción de software
+        #pkg-config # Utilidad para ayudar a compilar programas especificando banderas de compilación para bibliotecas
+        #cmake # Herramienta de gestión de compilación y construcción de software
         #qt5.full # El kit de herramientas Qt (versión 5) para el desarrollo de aplicaciones gráficas
         #qtcreator # Entorno de desarrollo integrado (IDE) para la creación de aplicaciones Qt
-        gnumake # Utilidad para controlar la generación de ejecutables y otros archivos a partir de archivos fuente
-        gdb # Depurador de GNU (debugger) para programas
-        alacritty
-        (callPackage ./pawncc/default.nix {})
-        vscodium # Versión de VS Code sin telemetría ni código propietario de Microsoft
+        #gnumake # Utilidad para controlar la generación de ejecutables y otros archivos a partir de archivos fuente
+        #gdb # Depurador de GNU (debugger) para programas
+        (callPackage ./pawncc.nix {})
+        #vscodium # Versión de VS Code sin telemetría ni código propietario de Microsoft
         #(vscode-with-extensions.override {
         #    vscode = vscodium;
         #    vscodeExtensions = with vscode-extensions; [
@@ -66,16 +70,17 @@ in
         #postman # Herramienta para el desarrollo, prueba y documentación de APIs
         #beekeeper-studio # Cliente SQL de código abierto y multiplataforma
         bruno # Herramienta de código abierto para probar APIs, alternativa a Postman
-        dbeaver-bin # Herramienta universal de bases de datos para desarrolladores y administradores
+#        dbeaver-bin # Herramienta universal de bases de datos para desarrolladores y administradores
 
 ## --- Diseño Gráfico y Multimedia (Imagen y Audio) ---
         kdePackages.elisa # The Elisa music player is developed by the KDE community and strives to be simple and pleasant to use.
+        youtube-music
         mixxx
         gimp # Editor de imágenes y retoque fotográfico avanzado (alternativa a Photoshop)
         audacity # Editor y grabador de audio digital
         #lmms # Estación de trabajo de audio digital (DAW) de código abierto
         pinta # Programa simple para dibujar/editar imágenes, similar a Paint.NET
-        pixelorama # Editor de gráficos pixel-art 2D
+        #pixelorama # Editor de gráficos pixel-art 2D
         gcolor3 # Selector y capturador de color simple para el escritorio
         #converseen # Procesador por lotes de imágenes, permite convertir y redimensionar
         #blender # Suite de creación 3D (modelado, animación, renderizado, etc.)
@@ -87,9 +92,9 @@ in
         ##soundux
         ##AppFlowy
         kdePackages.kdenlive # Editor de video no lineal avanzado
-        #obs-studio # Software libre y de código abierto para grabación de video y transmisión en vivo
+        obs-studio # Software libre y de código abierto para grabación de video y transmisión en vivo
         gh
-        vlc # Reproductor multimedia altamente compatible
+        mpv # Reproductor multimedia altamente compatible
         ffmpeg # Marco multimedia para procesar, convertir y transmitir audio/video
         yt-dlp # Descargador de videos de YouTube y otros sitios (sucesor de youtube-dl)
         eog # Visor de imágenes Eye of GNOME
@@ -100,10 +105,10 @@ in
         #cohesion
         #zotero
         #ferdium # Cliente de mensajería que consolida múltiples servicios (WhatsApp, Telegram, etc.)
-        (callPackage ./ferdium/default.nix {})
-       #discord
+        (callPackage ./ferdium.nix {})
+       discord
        vesktop # Cliente de escritorio alternativo para Discord, con más funciones y personalización
-       telegram-desktop # Cliente oficial de escritorio para la aplicación de mensajería Telegram
+#       telegram-desktop # Cliente oficial de escritorio para la aplicación de mensajería Telegram
        #thunderbird # Cliente de correo electrónico, calendario y noticias
        #fractal # Cliente de escritorio para la red de comunicación Matrix
        obsidian # Editor de notas basado en Markdown que utiliza un enfoque de grafo/red
@@ -115,9 +120,8 @@ in
 ## --- Ofimática y Lectura (Documentos, Ebooks, RSS) ---
         #onlyoffice-desktopeditors # Suite ofimática con funciones de colaboración
         fluent-reader # Lector de RSS/Atom/Feedly con interfaz moderna
-        #newsflash # Lector de noticias RSS/Atom moderno para el escritorio GNOME
+        newsflash # Lector de noticias RSS/Atom moderno para el escritorio GNOME
         #libreoffice-fresh # Suite ofimática completa y de código abierto (versión más reciente)
-        #calibre # Software de gestión de bibliotecas de libros electrónicos
 
 ## --- Juegos y Emulación ---
         ##superTuxKart # Juego de carreras de karts de código abierto, similar a Mario Kart
@@ -143,12 +147,14 @@ in
         p7zip # Utilidad para comprimir y descomprimir archivos en formato 7z
         zip # Utilidad de línea de comandos para crear archivos comprimidos .zip
         unzip # Utilidad de línea de comandos para extraer archivos .zip
+        tty-clock
         cava
         zellij
         peazip
         #rclone-ui
         rclone # Herramienta de sincronización de archivos con servicios de almacenamiento en la nube
         ncdu # Analizador de uso de disco en modo consola/terminal
+        bottom
         btop # Monitor de recursos del sistema con una interfaz visual y atractiva
         htop # Monitor de procesos interactivo en modo consola (similar a 'top' mejorado)
         unrar-wrapper # Utilidad para extraer archivos comprimidos en formato RAR
@@ -191,13 +197,12 @@ in
         meld # Herramienta visual para comparar y fusionar archivos y directorios
         rofimoji
         pika-backup # Herramienta de copia de seguridad simple basada en BorgBackup
-        (callPackage ./discord-desktop-mobile/default.nix {})
+        (callPackage ./discord-desktop-mobile.nix {})
         #(callPackage ./notion/default.nix {})
-        (callPackage ./sorter/default.nix {})
-        (callPackage ./sampctl/default.nix {})
-        (callPackage ./recorder/default.nix {})
-        (callPackage ./elyprism/default.nix {})
-        (callPackage ./tibia/default.nix {})
+        (callPackage ./sorter.nix {})
+#        (callPackage ./sampctl/default.nix {})
+        (callPackage ./recorder.nix {})
+        (callPackage ./tibia.nix {})
         #steam-run
         #gns3-gui
   ];

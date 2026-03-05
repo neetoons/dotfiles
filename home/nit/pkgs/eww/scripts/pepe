@@ -1,0 +1,23 @@
+#!/bin/sh
+INTERFAZ="enp2s0" # Cambia por tu interfaz
+
+TIEMPO=1 # Intervalo de medición en segundos
+
+# Función para obtener el tráfico en kbps
+get_kbps() {
+    RX_BYTES=$(cat /sys/class/net/$INTERFAZ/statistics/rx_bytes)
+    TX_BYTES=$(cat /sys/class/net/$INTERFAZ/statistics/tx_bytes)
+    sleep $TIEMPO
+    RX_BYTES_NEW=$(cat /sys/class/net/$INTERFAZ/statistics/rx_bytes)
+    TX_BYTES_NEW=$(cat /sys/class/net/$INTERFAZ/statistics/tx_bytes)
+
+    # Calcula la diferencia (bytes/segundo) y convierte a kbps (1 byte = 8 bits, 1 kbps = 1000 bits)
+    RX_kbps=$(echo "scale=2; ($RX_BYTES_NEW - $RX_BYTES) * 8 / $TIEMPO / 1000" | bc)
+    TX_kbps=$(echo "scale=2; ($TX_BYTES_NEW - $TX_BYTES) * 8 / $TIEMPO / 1000" | bc)
+
+    echo "$RX_kbps $TX_kbps"
+}
+while true; do
+    read RX TX <<<$(get_kbps)
+    echo "${RX}k/s"
+done

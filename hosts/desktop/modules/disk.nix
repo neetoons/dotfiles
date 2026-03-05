@@ -39,10 +39,6 @@
             }
         ];
     };
-    swapDevices = [{
-        device = "/swapfile";
-        size = 10 * 1024; # 10GB
-    }];
 
 
   nix.settings.download-buffer-size = 524288000;

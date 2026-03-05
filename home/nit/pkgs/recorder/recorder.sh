@@ -1,6 +1,6 @@
 #/run/current-system/sw/bin/bash
 #
-# Script de grabación de pantalla y audio usando wf-recorder, rofi, y slurp.
+# Script de grabación de pantalla y audio usando wf-recorder, fuzzel, y slurp.
 # Requisito: Instalar wf-recorder (nix-shell -p wf-recorder)
 
 # --- CONFIGURACIÓN DE RUTAS Y METADATOS ---
@@ -58,8 +58,8 @@ start_recording() {
         exit 1
     fi
 
-    # 2. Elegir modo de grabación (rofi)
-    MODE=$(echo -e "fullscreen\nSelect Area" | rofi -dmenu -p "Modo de Grabación:")
+    # 2. Elegir modo de grabación (fuzzel)
+    MODE=$(echo -e "fullscreen\nSelect Area" | fuzzel --dmenu -p "Modo de Grabación:")
 
     if [ -z "$MODE" ]; then
         echo "Grabación cancelada."
@@ -160,8 +160,8 @@ stop_recording() {
 
 # --- LÓGICA PRINCIPAL ---
 
-# Usar rofi para elegir entre Start y Stop
-ACTION=$(echo -e "Start\nStop" | rofi -dmenu -p "Record:")
+# Usar fuzzel para elegir entre Start y Stop
+ACTION=$(echo -e "Start\nStop" | fuzzel --dmenu -p "Record:")
 
 case "$ACTION" in
     Start)

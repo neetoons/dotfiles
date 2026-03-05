@@ -15,6 +15,7 @@
         ./modules/enviroment.nix
         ./modules/fonts.nix
         ./modules/file-manager.nix
+        ./modules/networking.nix
 
         #programs
         ./modules/programs/android/default.nix
@@ -27,11 +28,15 @@
         ./modules/virtualisation/default.nix
     ];
 
+
+
+    users.users.nit.shell = pkgs.fish;
+    programs.fish.enable = true;
     # Define a user account. Don't forget to set a password with ‘passwd’.
     users.users.nit = {
         isNormalUser = true;
         description = "Nit's Desktop";
-        extraGroups = [ "networkmanager" "wheel" ];
+        extraGroups = [ "networkmanager" "wheel" "video" "render"];
     };
 
     programs.dconf.enable = true;
@@ -55,7 +60,6 @@
     };
 
     programs.ydotool.enable = true;
-    security.rtkit.enable = true;
 
 # tibia
 programs.nix-ld.enable = true;

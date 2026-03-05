@@ -12,7 +12,7 @@ stdenv.mkDerivation {
   pname = "recorder";
   version = "1.0";
 
-  src = ./recorder.sh;
+  src = ./recorder/recorder.sh;
 
   # Las herramientas que necesitamos *durante* la construcción (el makeWrapper)
   nativeBuildInputs = [ makeWrapper ];

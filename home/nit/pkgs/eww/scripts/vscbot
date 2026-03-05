@@ -1,0 +1,10 @@
+#!/bin/sh
+
+status=$(curl -s "http://localhost:3006/status" | jq -r ".status")
+exit_code=$?
+
+if [ $exit_code -eq 0 ] && [ "$status" == "online" ]; then
+    echo "󱙺"
+else
+    echo "❌"
+fi

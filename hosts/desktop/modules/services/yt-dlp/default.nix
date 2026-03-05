@@ -6,8 +6,8 @@ let
   ytDlpApiSrc  = pkgs.fetchFromGitHub {
     owner = "neetoons";
     repo = "yt-dlp-api";
-    rev = "main"; 
-    hash = "sha256-nQ+hyZMUZGqf0oRKHYb5Zbr5d67FBA3JPfV/3taASW8="; 
+    rev = "main";
+    hash = "sha256-nQ+hyZMUZGqf0oRKHYb5Zbr5d67FBA3JPfV/3taASW8=";
   };
   ytDlpApiPackage = pkgs.buildNpmPackage rec {
     pname = "yt-dlp-api";
@@ -15,7 +15,7 @@ let
 
     src = ytDlpApiSrc;
 
-    buildAndTest = false; 
+    buildAndTest = false;
 
     installPhase = ''
       ${pkgs.nodePackages.typescript}/bin/tsc
@@ -46,7 +46,7 @@ in
       Restart = "on-failure";
       RestartSec = 5;
     };
-    
+
     # Opcional: Ejecutar el servicio como un usuario específico
     # Es una buena práctica no ejecutar servicios como root.
     #user = "yt-dlp-api"; # Puedes crear este usuario o usar uno existente como "nobody"
@@ -65,10 +65,10 @@ in
     isSystemUser = true;
     isNormalUser = false;
     group = "yt-dlp-api";
-    home = working_directory; 
+    home = working_directory;
     createHome = true;
   };
   users.groups.yt-dlp-api = { };
 
-   networking.firewall.allowedTCPPorts = [ 3005 ]; 
+   #networking.firewall.allowedTCPPorts = [ 3005 ];
 }

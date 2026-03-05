@@ -33,12 +33,23 @@ let
 
       # Ajustar el metadata.desktop para que use la variante por defecto correctamente
       # 'sed' es un editor de texto por comandos que usaremos para cambiar la configuración
-      #sed -i 's|ConfigFile=Themes/astronaut.conf|ConfigFile=Themes/astronaut.conf|' "$targetDir/metadata.desktop"
-      sed -i 's|^ConfigFile=.*|ConfigFile=Themes/pixel_sakura_static.conf|' "$targetDir/metadata.desktop"
+      sed -i 's|ConfigFile=Themes/astronaut.conf|ConfigFile=Themes/astronaut.conf|' "$targetDir/metadata.desktop"
+      #sed -i 's|^ConfigFile=.*|ConfigFile=Themes/pixel_sakura_static.conf|' "$targetDir/metadata.desktop"
     '';
   };
 in
 {
+#  services.greetd= {
+#    enable = true;
+#    settings = {
+#      default_session = {
+#        command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --cmd niri";
+#        user = "greeter";
+#      };
+#    };
+#  };
+
+
   # 1. Habilitar SDDM y aplicar el tema
   services.displayManager = {
     sddm.enable = true;

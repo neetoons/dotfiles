@@ -1,0 +1,169 @@
+(defpoll calendar_day :interval "20h" "date '+%d'")
+(defpoll calendar_year :interval "20h" "date '+%Y'")
+(defvar desplegado false)
+(defwindow calendar
+    :monitor 0
+    :windowtype "dock"
+    :stacking "fg"
+    :geometry (geometry :x "-20px"
+                        :y "7%"
+                        :anchor "top center"
+                        :width "270px"
+                        :height "60px")
+                        (cal))
+
+(defwidget cal []
+    (box :class "cal-in"
+    (calendar   :class "call"
+                :day calendar_day
+                :year calendar_year)))
+
+
+(defwidget time_module []
+    (box    :orientation "v"
+            :space-evenly false
+        (button :onclick "${EWW_CMD} update desplegado=${!desplegado}"
+                time)
+    (revealer   :transition "slidedown"
+                :reveal desplegado
+                :duration "350ms"
+         (calendar))))
+
+(defwindow bar
+  :monitor 0
+  :windowtype "dock"
+  :stacking "fg"
+  :exclusive true
+  :geometry (geometry :x "0%"
+                      :y "0%"
+                      :width "100%"
+                      :height "10px"
+                      :anchor "top center")
+  (bar))
+
+(defwindow bar2
+  :monitor 0
+  :windowtype "dock"
+  :stacking "fg"
+  ;:exclusive true
+  :geometry (geometry :anchor "bottom center")
+  (niri))
+
+(deflisten niri :initial "[]" "./scripts/niri")
+(defwidget niri []
+(box
+     :orientation "h"
+     :space-evenly false
+     :haling "center"
+     :spacing 20
+     (for ni in niri
+        (box
+            :class "ws-button ${ni.is_active ? 'active' : ''}"
+            (label :text "${ni.is_active ? '󰮯' : '•'}"))))
+)
+
+
+(defwidget bar []
+  (centerbox    :orientation "h"
+    (left)
+    (center)
+    (right)))
+
+(defwidget left []
+  (box :class "workspaces"
+       :orientation "h"
+       :space-evenly false
+       :halign "start"
+       :spacing 23
+       (box :class "nixos" (label :text ""))
+        ;ping
+        (network)
+        storage
+        memory
+        cpu_usage
+        (bots)))
+
+(defwidget center []
+  (box  :class "timer"
+        :orientation "h"
+        :space-evenly false
+        :halign "center"
+  (time_module) ))
+
+(defwidget right []
+  (box :class "volumen" :orientation "h" :space-evenly false :halign "end" :spacing 15
+    (systray :class "tray" :icon-size 15 :spacing 6)
+    (volume_control))
+)
+
+(defwidget bots []
+    (box :class "bots" :spacing 20
+        vscbot
+        neetoons))
+
+(defwidget music []
+  (box :class "music"
+       :orientation "h"
+       :space-evenly false
+       :halign "center"
+    {music != "" ? "🎵${music}" : ""}))
+
+(defpoll ping :interval "1s"
+  `result=$(ping -c 1 8.8.8.8 | awk -F'time=' '/time=/ {print $2}' | awk '{print $1 "ₘₛ"}'); [ -z "$result" ] && echo "❌" || echo "   $result"`
+  )
+(defpoll vscbot :interval "10s"
+  "scripts/vscbot")
+
+(defpoll neetoons :interval "10s"
+  "scripts/neetoons")
+
+(defpoll storage :interval "5s"
+  `df -h --output=avail / | head -n 2 | tail -n 1 | cut -c -4 | awk '{print "󰋊 " $1 "Gb"}'`)
+
+(deflisten music :initial ""
+  "playerctl --follow metadata --format '{{ artist }} - {{ title }}' || true")
+
+(defpoll volume :interval "1s"
+  "scripts/getvol")
+
+
+(defpoll time :interval "10s"
+  "date '+%a %d  %I:%M %^p'")
+
+(defpoll memory :interval "2s"
+  `free | grep Mem | awk '{printf "   %.1f%", $3/$2 * 100.0}'
+`
+)
+(defpoll cpu_usage :interval "2s"
+  `top -bn1 | grep '%Cpu' | awk '{print NR-1 ": 󰍛 " 100 - $8 "%"}' | cut -c 4-`)
+
+
+(defvar vol_reveal false)
+
+(defwidget volume_control []
+  (eventbox :onhover "${EWW_CMD} update vol_reveal=true"
+            :onhoverlost "${EWW_CMD} update vol_reveal=false"
+    (box :class "volume-container"
+         :orientation "h"
+         :space-evenly false
+         :spacing 5
+
+      (button :onclick "scripts/getvol mute" ; Script para mutear (opcional)
+              :class "vol-icon"
+        "󰕾")
+
+      (revealer :transition "slideright"
+                :reveal vol_reveal
+                :duration "300ms"
+        (scale :class "vol-bar"
+               :value volume
+               :orientation "h"
+               :tooltip "Volumen: ${volume}%"
+               :max 101
+               :min 0
+               :onchange "amixer sset Master {}%")))))
+
+(defpoll net-icon :interval "5s" "scripts/network")
+(defwidget network []
+    (button :onclick "nm-connection-editor &"
+    (label :text net-icon :class "net-label")))

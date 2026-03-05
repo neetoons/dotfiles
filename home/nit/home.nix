@@ -2,11 +2,14 @@
 {
     imports = [
         ./pkgs/packages.nix
-        ./spicetify/default.nix
-        ./hypr/hypridle/default.nix
-        ./hypr/hyprlock/default.nix
-        ./vscodium/default.nix
-        ./nvim/default.nix
+        ./pkgs/spicetify.nix
+        ./pkgs/hypridle.nix
+        ./pkgs/hyprlock.nix
+        ./pkgs/nvim.nix
+        ./pkgs/alacritty.nix
+        ./pkgs/eww.nix
+        #./vscodium/default.nix
+        #./swaync.nix
     ];
 
     home.username = "nit";
@@ -23,7 +26,8 @@
 
     home.sessionVariables = {
         EDITOR = "${pkgs.neovim}/bin/nvim";
-        VISUAL = "${pkgs.zed-editor}/bin/zed-editor";
+        #VISUAL = "${pkgs.zed-editor}/bin/zed-editor";
+        TERMINAL = "${pkgs.alacritty-graphics}/bin/alacritty";
     };
 
     stylix = {
@@ -32,7 +36,6 @@
         polarity = "dark";
     };
 
-    #home-manager.users.nit.services.kdeconnect.enable = true;
 
     programs.home-manager.enable = true;
 }

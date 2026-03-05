@@ -29,12 +29,12 @@
   networking.firewall = {
     enable = true;
     allowedTCPPorts = [
-      20 # FTP data (active mode) - often not strictly needed for passive
-      21 # FTP control
+      #20 # FTP data (active mode) - often not strictly needed for passive
+      #21 # FTP control
     ];
     allowedTCPPortRanges = [
       # Passive mode port range (must match pasv_min_port and pasv_max_port)
-      { from = 50000; to = 50099; }
+      #{ from = 50000; to = 50099; }
     ];
   };
     systemd.tmpfiles.rules = [

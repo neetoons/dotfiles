@@ -1,0 +1,51 @@
+* {
+  all: unset;
+  font-size: 11px;
+}
+
+.bar {
+  color: rgba(255,255,255, 0.8);
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0));
+  text-shadow: 2px 2px 2px rgba(0,0,0,0.3);
+  padding: 7px 14px 0px 14px;
+}
+
+.niri-tabs {
+  background: rgba(255, 255, 255, 0.05);
+  padding: 2px 8px;
+  border-radius: 10px;
+}
+
+.ws-button {
+  color: rgba(255,255,255, 0.2);
+
+  &.active {
+    color: rgba(255, 255, 255, 0.5);
+    text-shadow: 0 0 3px rgba(137, 180, 250, 0.5);
+  }
+}
+
+.niri {
+  padding: 0px 13px 0px 13px;
+}
+
+.vol-icon {
+  font-size: 18px;
+}
+
+.vol-bar scale {
+  all: unset;
+}
+
+scale trough {
+  background-color: #313244;
+  border-radius: 5px;
+  min-width: 80px;
+  min-height: 6px;
+  margin: 0 10px;
+}
+
+scale highlight {
+  background-color: #89b4fa;
+  border-radius: 5px;
+}
