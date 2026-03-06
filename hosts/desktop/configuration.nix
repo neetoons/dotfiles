@@ -7,7 +7,7 @@
 
         #configuration
         ./hardware-configuration.nix
-        ./modules/timers.nix
+        #./modules/timers.nix
         ./modules/sddm.nix
         ./modules/wayland.nix
         ./modules/audio.nix
@@ -28,6 +28,7 @@
         ./modules/virtualisation/default.nix
     ];
 
+    services.journald.extraConfig = "SystemMaxUse=500M";
 
 
     users.users.nit.shell = pkgs.fish;

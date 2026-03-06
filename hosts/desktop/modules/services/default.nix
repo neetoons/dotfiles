@@ -7,9 +7,8 @@
     #./jellyfin/default.nix
     ./sorter/default.nix
     ./clean-cache/default.nix
-    ./vsftpd/default.nix
+    #./vsftpd/default.nix
 	];
 
-
-	services.flatpak.enable = true;
+    services.flatpak.enable = true;
 }

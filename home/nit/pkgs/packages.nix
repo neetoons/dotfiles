@@ -22,8 +22,7 @@ in
         gnome-solanum # Aplicación de temporizador Pomodoro para gestionar el tiempo
         handbrake
         lazygit
-        #upscayl
-        #mangohud
+        mangohud
         #protonup-qt
 
         lmstudio # ia
@@ -37,7 +36,6 @@ in
         #zeal
         typescript # Lenguaje de programación, superset de JavaScript que añade tipado estático
         python310 # Lenguaje de programación Python (versión 3.10)
-        ##android-studio # Entorno de desarrollo integrado (IDE) para crear aplicaciones Android
         #pkg-config # Utilidad para ayudar a compilar programas especificando banderas de compilación para bibliotecas
         #cmake # Herramienta de gestión de compilación y construcción de software
         #qt5.full # El kit de herramientas Qt (versión 5) para el desarrollo de aplicaciones gráficas
@@ -45,7 +43,7 @@ in
         #gnumake # Utilidad para controlar la generación de ejecutables y otros archivos a partir de archivos fuente
         #gdb # Depurador de GNU (debugger) para programas
         (callPackage ./pawncc.nix {})
-        #vscodium # Versión de VS Code sin telemetría ni código propietario de Microsoft
+        vscodium # Versión de VS Code sin telemetría ni código propietario de Microsoft
         #(vscode-with-extensions.override {
         #    vscode = vscodium;
         #    vscodeExtensions = with vscode-extensions; [
@@ -78,7 +76,7 @@ in
         mixxx
         gimp # Editor de imágenes y retoque fotográfico avanzado (alternativa a Photoshop)
         audacity # Editor y grabador de audio digital
-        #lmms # Estación de trabajo de audio digital (DAW) de código abierto
+        lmms # Estación de trabajo de audio digital (DAW) de código abierto
         pinta # Programa simple para dibujar/editar imágenes, similar a Paint.NET
         #pixelorama # Editor de gráficos pixel-art 2D
         gcolor3 # Selector y capturador de color simple para el escritorio
@@ -98,7 +96,6 @@ in
         ffmpeg # Marco multimedia para procesar, convertir y transmitir audio/video
         yt-dlp # Descargador de videos de YouTube y otros sitios (sucesor de youtube-dl)
         eog # Visor de imágenes Eye of GNOME
-        #vidcutter # Editor de video simple para unir o cortar clips
         losslesscut-bin # Editor de video simple para cortes rápidos sin pérdida de calidad
         #aegisub # Editor avanzado de subtítulos, popular para karaoke
 ## --- Comunicación y Productividad (Mensajería, Correo, Notas) ---
@@ -108,8 +105,8 @@ in
         (callPackage ./ferdium.nix {})
        discord
        vesktop # Cliente de escritorio alternativo para Discord, con más funciones y personalización
-#       telegram-desktop # Cliente oficial de escritorio para la aplicación de mensajería Telegram
-       #thunderbird # Cliente de correo electrónico, calendario y noticias
+       telegram-desktop # Cliente oficial de escritorio para la aplicación de mensajería Telegram
+       thunderbird # Cliente de correo electrónico, calendario y noticias
        #fractal # Cliente de escritorio para la red de comunicación Matrix
        obsidian # Editor de notas basado en Markdown que utiliza un enfoque de grafo/red
        ##cinny-desktop # Cliente de escritorio para la red de comunicación descentralizada Matrix
@@ -118,7 +115,7 @@ in
        sticky-notes # Aplicación de notas adhesivas para el escritorio
 
 ## --- Ofimática y Lectura (Documentos, Ebooks, RSS) ---
-        #onlyoffice-desktopeditors # Suite ofimática con funciones de colaboración
+        onlyoffice-desktopeditors # Suite ofimática con funciones de colaboración
         fluent-reader # Lector de RSS/Atom/Feedly con interfaz moderna
         newsflash # Lector de noticias RSS/Atom moderno para el escritorio GNOME
         #libreoffice-fresh # Suite ofimática completa y de código abierto (versión más reciente)
@@ -136,13 +133,12 @@ in
         lutris
         heroic
         warehouse
-        #quickemu # Herramienta para crear y ejecutar máquinas virtuales QEMU de forma rápida
-        #qemu # Emulador y virtualizador de máquinas
+        quickemu # Herramienta para crear y ejecutar máquinas virtuales QEMU de forma rápida
+        qemu # Emulador y virtualizador de máquinas
         net-tools
         #aegyptus # Subtitulador
 
 ## --- Utilidades de Sistema y Red (Archivos, Terminal, Monitoreo) ---
-        #ranger # Administrador de archivos de consola con atajos de teclado al estilo Vi
         yazi
         p7zip # Utilidad para comprimir y descomprimir archivos en formato 7z
         zip # Utilidad de línea de comandos para crear archivos comprimidos .zip
@@ -151,7 +147,7 @@ in
         cava
         zellij
         peazip
-        #rclone-ui
+        rclone-ui
         rclone # Herramienta de sincronización de archivos con servicios de almacenamiento en la nube
         ncdu # Analizador de uso de disco en modo consola/terminal
         bottom
@@ -159,7 +155,6 @@ in
         htop # Monitor de procesos interactivo en modo consola (similar a 'top' mejorado)
         unrar-wrapper # Utilidad para extraer archivos comprimidos en formato RAR
         tree # Utilidad de línea de comandos para listar contenido de directorios en formato de árbol
-        zsh # Shell de comandos extendida con muchas funciones y personalización
         jq # Procesador ligero y flexible de JSON en línea de comandos
         wget # Utilidad de línea de comandos para descargar archivos desde la web
         fzf # Buscador difuso (fuzzy finder) de línea de comandos
@@ -167,7 +162,6 @@ in
         disfetch
         file-roller # Archivador de archivos (comprime/descomprime) para el escritorio GNOME
         qdirstat # Herramienta gráfica para visualizar el uso del disco
-        eza
         fd
         #guiscrcpy # Interfaz gráfica para scrcpy (controlar y ver Android en el PC)
 
@@ -177,7 +171,6 @@ in
         #slskd # Cliente de demonio para la red de intercambio de archivos Soulseek (SLSK)
         nicotine-plus # Cliente para la red de intercambio de archivos Soulseek (SLSK)
         #audio-sharing # Herramienta para compartir audio de una aplicación a otra
-        #whatip # Utilidad para mostrar la dirección IP pública y otra información de red
         #netpeek # Herramienta gráfica simple para analizar el tráfico de red
         #alpaca # Herramienta de análisis de datos de red, similar a Wireshark
         #shortwave # Reproductor de radio por Internet

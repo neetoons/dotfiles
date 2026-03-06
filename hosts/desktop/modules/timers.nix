@@ -1,10 +1,10 @@
-{pkgs, pkgs-unstable, ...}: 
+{pkgs, pkgs-unstable, ...}:
 {
     systemd.timers."gammastep" = {
     wantedBy = [ "timers.target" ];
         timerConfig = {
             OnCalendar = "-*-*-* 19:00:00";
-            Persistent = true; 
+            Persistent = true;
             OnBootSec = "5m";
             OnUnitActiveSec = "5m";
             Unit = "gammastep.service";
@@ -21,5 +21,5 @@
             Type = "oneshot";
             User = "root";
         };
-    }; 
+    };
 }
