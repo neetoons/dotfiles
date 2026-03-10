@@ -22,7 +22,7 @@
         #./modules/programs/ollama/default.nix
 
         # services
-        ./modules/services/default.nix
+        ./modules/services/services.nix
 
         # virtualisation
         ./modules/virtualisation/default.nix
@@ -63,63 +63,63 @@
     programs.ydotool.enable = true;
 
 # tibia
-programs.nix-ld.enable = true;
-programs.nix-ld.libraries = with pkgs; [
-    openssl
-    kdePackages.wrapQtAppsHook
-    kdePackages.qtwayland
-    kdePackages.qtbase
-    kdePackages.qtdeclarative
-    kdePackages.wayland
-    xorg.libXdamage
-    xorg.libXcomposite
-    xorg.libX11
-    xorg.libXext
-    xorg.libXcursor
-    xorg.libXinerama
-    xorg.libXrender
-    xorg.libxcb
-    xorg.libXrandr
-    xorg.libXfixes
-    xorg.libXtst
-    xorg.libxkbfile
-    xorg.libXmu
-    xorg.libXpm
-    xorg.libXaw
-    libxcb-wm
-    libxcb-image
-    libxcb-keysyms
-    libxcb-render-util
-    libxkbcommon
-    libpulseaudio
-    libxml2_13
-    libxcrypt-legacy
-    libkrb5
-    libuuid
-    libevent
-    libGL
-    libpng
-    libxslt
-    libdrm
-    keyutils
-    icu
-    mesa
-    udev
-    alsa-lib
-    expat
-    dbus
-    fontconfig
-    freetype
-    glib
-    zlib
-    nss
-    nspr
-    libxcrypt-legacy
-    sqlite
-    zlib
-    xz
-    brotli
-];
+#programs.nix-ld.enable = true;
+#programs.nix-ld.libraries = with pkgs; [
+#    openssl
+#    kdePackages.wrapQtAppsHook
+#    kdePackages.qtwayland
+#    kdePackages.qtbase
+#    kdePackages.qtdeclarative
+#    kdePackages.wayland
+#    xorg.libXdamage
+#    xorg.libXcomposite
+#    xorg.libX11
+#    xorg.libXext
+#    xorg.libXcursor
+#    xorg.libXinerama
+#    xorg.libXrender
+#    xorg.libxcb
+#    xorg.libXrandr
+#    xorg.libXfixes
+#    xorg.libXtst
+#    xorg.libxkbfile
+#    xorg.libXmu
+#    xorg.libXpm
+#    xorg.libXaw
+#    libxcb-wm
+#    libxcb-image
+#    libxcb-keysyms
+#    libxcb-render-util
+#    libxkbcommon
+#    libpulseaudio
+#    libxml2_13
+#    libxcrypt-legacy
+#    libkrb5
+#    libuuid
+#    libevent
+#    libGL
+#    libpng
+#    libxslt
+#    libdrm
+#    keyutils
+#    icu
+#    mesa
+#    udev
+#    alsa-lib
+#    expat
+#    dbus
+#    fontconfig
+#    freetype
+#    glib
+#    zlib
+#    nss
+#    nspr
+#    libxcrypt-legacy
+#    sqlite
+#    zlib
+#    xz
+#    brotli
+#];
 
 environment.shellAliases = {
   tibiago = "LD_LIBRARY_PATH=\"/home/nit/.local/share/CipSoft GmbH/Tibia/packages/Tibia/bin/lib:/home/nit/.local/share/CipSoft GmbH/Tibia/packages/Tibia/lib:$NIX_LD_LIBRARY_PATH\" \"/home/nit/.local/share/CipSoft GmbH/Tibia/packages/Tibia/bin/client\"";

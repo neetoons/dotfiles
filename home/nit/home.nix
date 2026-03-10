@@ -1,17 +1,18 @@
-{ inputs, pkgs, ... }:
+{ inputs, pkgs, assets, ... }:
 let
+  assets = pkgs.callPackage ./pkgs/assets.nix { };
   ManhattanCafe = pkgs.stdenv.mkDerivation rec {
     name = "ManhattanCafe";
-    src = ./ManhattanCafe;
-
+    src = assets;
     installPhase = ''
-      # El estándar XDG busca cursores en share/icons
-      mkdir -p $out/share/icons/${name}
-      cp -r cursors index.theme $out/share/icons/${name}/
+      mkdir -p $out/share/icons/${name}/
+     cd share/assets/cursors/${name}
+     cp -r cursors index.theme $out/share/icons/${name}/
     '';
   };
 in
 {
+
     imports = [
         ./pkgs/packages.nix
         ./pkgs/spicetify.nix
@@ -20,6 +21,10 @@ in
         ./pkgs/nvim.nix
         ./pkgs/alacritty.nix
         ./pkgs/eww.nix
+        ./pkgs/mpv.nix
+        ./pkgs/waypaper.nix
+        ./mimeapps.nix
+        ./niri/niri.nix
         #./vscodium/default.nix
         #./swaync.nix
     ];
@@ -72,6 +77,22 @@ home.pointerCursor = {
         polarity = "dark";
     };
 
+    #git = {
+    #    enable = true;
+    #    userName = "neetzeek";
+    #    userEmail = "neet.toons@email.com";
+    #    extraConfig.init.defaultBranch = "main";
+    #};
+
+  programs.git = {
+    enable = true;
+    settings = {
+      user = {
+        name = "neetoons";
+        email = "neet.toons@gmail.com";
+      };
+    };
+  };
 
     programs.home-manager.enable = true;
 }

@@ -8,6 +8,7 @@ in
         inputs.zen-browser.packages."${system}".default
         inputs.oxicord.packages.${system}.default
         inputs.elyprismlauncher.packages.${system}.default
+        inputs.tibia-nix.packages.${system}.default
 ## --- PANTHEON SUITE
         pantheon.elementary-calculator
 
@@ -17,19 +18,19 @@ in
         gnome-clocks
         gnome-font-viewer
         gnome-decoder
-        gnome-sound-recorder #reco
-        gnome-keyring
+        gnome-keyring # is a secure, encrypted daemon for GNOME that stores user credentials, passwords, keys, and certificates, typically unlocking automatically upon user login. It acts as a secret service, providing, for instance, org.freedesktop.secrets for applications.
         gnome-solanum # Aplicación de temporizador Pomodoro para gestionar el tiempo
+
         handbrake
         lazygit
         mangohud
         #protonup-qt
-
         lmstudio # ia
 
 ## --- Desarrollo y Programación (IDEs, Editores de Código, Herramientas de Compilación) ---
         #zed-editor # Editor de texto y código de alto rendimiento, enfocado en el desarrollo
         #ungoogled-chromium
+        qutebrowser
         yarn
         pnpm
         nodejs_latest # Entorno de ejecución de JavaScript del lado del servidor (versión 24)
@@ -43,7 +44,7 @@ in
         #gnumake # Utilidad para controlar la generación de ejecutables y otros archivos a partir de archivos fuente
         #gdb # Depurador de GNU (debugger) para programas
         (callPackage ./pawncc.nix {})
-        vscodium # Versión de VS Code sin telemetría ni código propietario de Microsoft
+        #vscodium # Versión de VS Code sin telemetría ni código propietario de Microsoft
         #(vscode-with-extensions.override {
         #    vscode = vscodium;
         #    vscodeExtensions = with vscode-extensions; [
@@ -72,7 +73,7 @@ in
 
 ## --- Diseño Gráfico y Multimedia (Imagen y Audio) ---
         kdePackages.elisa # The Elisa music player is developed by the KDE community and strives to be simple and pleasant to use.
-        youtube-music
+        #youtube-music
         mixxx
         gimp # Editor de imágenes y retoque fotográfico avanzado (alternativa a Photoshop)
         audacity # Editor y grabador de audio digital
@@ -92,10 +93,10 @@ in
         kdePackages.kdenlive # Editor de video no lineal avanzado
         obs-studio # Software libre y de código abierto para grabación de video y transmisión en vivo
         gh
-        mpv # Reproductor multimedia altamente compatible
         ffmpeg # Marco multimedia para procesar, convertir y transmitir audio/video
         yt-dlp # Descargador de videos de YouTube y otros sitios (sucesor de youtube-dl)
-        eog # Visor de imágenes Eye of GNOME
+        waypaper
+        swayimg # Visor de imágenes
         losslesscut-bin # Editor de video simple para cortes rápidos sin pérdida de calidad
         #aegisub # Editor avanzado de subtítulos, popular para karaoke
 ## --- Comunicación y Productividad (Mensajería, Correo, Notas) ---
@@ -195,7 +196,7 @@ in
         (callPackage ./sorter.nix {})
 #        (callPackage ./sampctl/default.nix {})
         (callPackage ./recorder.nix {})
-        (callPackage ./tibia.nix {})
+        #(callPackage ./tibia.nix {})
         #steam-run
         #gns3-gui
   ];

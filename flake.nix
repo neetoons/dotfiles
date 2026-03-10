@@ -2,6 +2,7 @@
   description = "Nit's NixOS configuration";
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.11";
+    nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
 
     nix-cachyos-kernel.url = "github:xddxdd/nix-cachyos-kernel/release";
 
@@ -11,7 +12,7 @@
     };
 
     niri = {
-        url = "github:niri-wm/niri";
+        url = "github:sodiboo/niri-flake";
         inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -40,10 +41,17 @@
         inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    tibia-nix = {
+        url = "github:neetoons/tibia-nix";
+        inputs.nixpkgs.follows = "nixpkgs-unstable";
+    };
+
   };
 
   outputs = {nixpkgs, home-manager, ... }@inputs:
   {
+
+
     nixosConfigurations = {
       nixos = nixpkgs.lib.nixosSystem {
         specialArgs = { inherit inputs; };
@@ -51,12 +59,14 @@
           home-manager.nixosModules.home-manager
           ./hosts/desktop/configuration.nix
           {
+            nixpkgs.overlays = [ inputs.niri.overlays.niri ];
             home-manager.useUserPackages = true;
             home-manager = {
               users.nit = {
                   imports = [
                     inputs.spicetify-nix.homeManagerModules.default
                     inputs.stylix.homeModules.stylix
+                    inputs.niri.homeModules.niri
                     ./home/nit/home.nix
                   ];
                 };

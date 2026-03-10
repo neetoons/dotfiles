@@ -2,7 +2,8 @@
 {
     programs.niri = {
         enable = true;
-        package = inputs.niri.packages.${pkgs.stdenv.hostPlatform.system}.niri;
+        package = pkgs.niri;
+        #package = inputs.niri.packages.${pkgs.stdenv.hostPlatform.system}.niri;
     };
 
     xdg.portal = {
@@ -21,7 +22,6 @@
 
     # --- Entorno de Escritorio y Complementos (Wayland/Sway) ---
         xdg-desktop-portal # Implementa las API de Freedesktop para aplicaciones aisladas (necesario en Wayland)
-        waypaper # Wallpaper manager
         #rofi # Lanzador de aplicaciones, selector de ventanas y menús dinámicos compatible con Wayland
         fuzzel
         swaynotificationcenter
@@ -40,11 +40,8 @@
         satty # edicion de captura
 
     # --- Audio, Media y Utilidades de Red ---
-        mpvpaper # Herramienta para usar un video como fondo de escritorio (requiere mpv)
         playerctl # Utilidad de línea de comandos para controlar reproductores de medios compatibles con MPRIS
         gammastep # Herramienta para ajustar la temperatura de color de la pantalla según la hora del día (similar a Redshift/F.lux)
-
-        xwayland-satellite # necesario para niri
     ];
 
   services.xserver.videoDrivers = [ "modesetting" ];
@@ -65,6 +62,7 @@
     GSK_RENDERER = "opengl";
     VDPAU_DRIVER = "va_gl";
     ELECTRON_FLAGS = "--disable-gpu-compositing --disable-gpu-rasterization";
+    WLR_DRM_DEVICES = "/dev/dri/by-path/pci-0000:00:02.0-render";
   };
 
   # Necesario para que las apps encuentren el servicio en Wayland/Hyprland
