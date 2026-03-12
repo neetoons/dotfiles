@@ -44,7 +44,7 @@ in
         #gnumake # Utilidad para controlar la generación de ejecutables y otros archivos a partir de archivos fuente
         #gdb # Depurador de GNU (debugger) para programas
         (callPackage ./pawncc.nix {})
-        #vscodium # Versión de VS Code sin telemetría ni código propietario de Microsoft
+        vscodium # Versión de VS Code sin telemetría ni código propietario de Microsoft
         #(vscode-with-extensions.override {
         #    vscode = vscodium;
         #    vscodeExtensions = with vscode-extensions; [
@@ -117,7 +117,6 @@ in
 
 ## --- Ofimática y Lectura (Documentos, Ebooks, RSS) ---
         onlyoffice-desktopeditors # Suite ofimática con funciones de colaboración
-        fluent-reader # Lector de RSS/Atom/Feedly con interfaz moderna
         newsflash # Lector de noticias RSS/Atom moderno para el escritorio GNOME
         #libreoffice-fresh # Suite ofimática completa y de código abierto (versión más reciente)
 

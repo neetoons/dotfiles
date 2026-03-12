@@ -108,16 +108,15 @@
         ]
       },
       "locked": {
-        "lastModified": 1768216594,
-        "narHash": "sha256-p9gFdiVRQBIVMatq0v1lw+2ggSU3RV42u55O6w44L9E=",
+        "lastModified": 1773258383,
+        "narHash": "sha256-XVkf+hrKobeS2u+Bap1PNQBkAUPa+a93aEkS1X3ykbo=",
         "owner": "ElyPrismLauncher",
         "repo": "ElyPrismLauncher",
-        "rev": "4620911783b904ccf0919e9d67ae8ff3c5034624",
+        "rev": "6d55c0d6b2e6faaa0753edab25c2195df5d1d269",
         "type": "github"
       },
       "original": {
         "owner": "ElyPrismLauncher",
-        "ref": "10.0.2",
         "repo": "ElyPrismLauncher",
         "type": "github"
       }
@@ -806,11 +805,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1772772172,
-        "narHash": "sha256-OCEb6jXTvhnMTMqMLleYChekDO/zh+VtunBAS0WevPM=",
+        "lastModified": 1773225617,
+        "narHash": "sha256-IT0n3jJgf4M7U0EuZJ2XJwXBmSJVVK3auqWDGeHGMzY=",
         "owner": "0xc000022070",
         "repo": "zen-browser-flake",
-        "rev": "5f8f34c0dd56808ecbfa35697353c455e4a416b3",
+        "rev": "413a22ab7acf848ed4e20c3f47ea96ccd4788518",
         "type": "github"
       },
       "original": {

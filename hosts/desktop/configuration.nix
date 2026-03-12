@@ -29,7 +29,12 @@
     ];
 
     services.journald.extraConfig = "SystemMaxUse=500M";
-
+    documentation.man.generateCaches = false;
+    services.open-webui.enable = true;
+    services.ollama = {
+      enable = true;
+      package = pkgs.ollama-cpu;
+    };
 
     users.users.nit.shell = pkgs.fish;
     programs.fish.enable = true;

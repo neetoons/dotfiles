@@ -5,6 +5,8 @@ let
   wallpaper = "${assets}/share/assets/wallpapers/3.jpg";
 in
 {
+
+      home.packages = [ pkgs.mpvpaper];
       xdg.configFile."waypaper/config.ini".text =  ''
         [Settings]
         language = en

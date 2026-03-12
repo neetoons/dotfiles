@@ -32,7 +32,7 @@
     };
 
     elyprismlauncher = {
-        url = "github:ElyPrismLauncher/ElyPrismLauncher/10.0.2";
+        url = "github:ElyPrismLauncher/ElyPrismLauncher";
         inputs.nixpkgs.follows = "nixpkgs";
     };
 
