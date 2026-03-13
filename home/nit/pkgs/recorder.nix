@@ -4,7 +4,7 @@ let
   # Definimos una lista de todas las dependencias que el script necesita para EJECUTARSE
   runtimeDeps = [
     pkgs.wf-recorder # Necesario para la funcionalidad del script
-    pkgs.bash        # Necesario para el shebang (aunque sea implícito, es bueno tenerlo)
+    pkgs.bash # Necesario para el shebang (aunque sea implícito, es bueno tenerlo)
   ];
 in
 

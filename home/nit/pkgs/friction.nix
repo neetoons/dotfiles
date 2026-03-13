@@ -11,18 +11,18 @@ clangStdenv.mkDerivation rec {
     fetchSubmodules = true;
   };
 
-    clang = clang_18;
-    qscintilla = libsForQt5.qscintilla;
+  clang = clang_18;
+  qscintilla = libsForQt5.qscintilla;
 
-    nativeBuildInputs = [
-      ninja
-      clang
-      cmake
-      pkg-config
-      wrapQtAppsHook
-    ];
+  nativeBuildInputs = [
+    ninja
+    clang
+    cmake
+    pkg-config
+    wrapQtAppsHook
+  ];
 
-    buildInputs = [
+  buildInputs = [
     qt5Full
     qscintilla
     ffmpeg_4-full

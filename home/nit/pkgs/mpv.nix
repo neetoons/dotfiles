@@ -38,8 +38,8 @@
       };
     };
     scripts = with pkgs.mpvScripts; [
-        modernz
-        thumbfast
+      modernz
+      thumbfast
     ];
   };
 }

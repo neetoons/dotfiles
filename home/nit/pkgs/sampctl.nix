@@ -6,7 +6,8 @@ let
   sha256_amd64 = "sha256-Jbuwog6YlQ58xFPVTScnDkmRPt66l1eMc0fhfusiNx8=";
   sha256_386 = "sha256-HiHX5hntFfi0Wxi+KxNa6MGzEZcT942erB7mxUNKze0=";
 
-in pkgs.stdenv.mkDerivation rec {
+in
+pkgs.stdenv.mkDerivation rec {
   pname = "sampctl";
   inherit version;
 

@@ -1,6 +1,4 @@
-{
-  pkgs ? import <nixpkgs> { },
-}:
+{ pkgs, ...}:
 pkgs.multiStdenv.mkDerivation rec {
   pname = "pawncc";
   version = "3.10.11";

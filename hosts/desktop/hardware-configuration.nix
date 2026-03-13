@@ -5,15 +5,16 @@
 
 {
   imports = [
-        (modulesPath + "/installer/scan/not-detected.nix")
-        ./modules/kernel.nix
+    (modulesPath + "/installer/scan/not-detected.nix")
+    ./modules/kernel.nix
   ];
 
   boot.extraModulePackages = [ ];
 
   services.fstrim.enable = true;
   fileSystems."/" =
-    { device = "/dev/disk/by-uuid/b9ba3b58-47fd-4c5a-a6b7-060cc2fa64a4";
+    {
+      device = "/dev/disk/by-uuid/b9ba3b58-47fd-4c5a-a6b7-060cc2fa64a4";
       fsType = "ext4";
       options = [ "noatime" "nodiratime" "discard" ];
     };

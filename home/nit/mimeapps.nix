@@ -58,7 +58,7 @@
       "video/mp4" = [ "fr.handbrake.gnb.desktop" "zen-beta.desktop" "mpv.desktop" ];
       "video/webm " = [ "fr.handbrake.gnb.desktop" "zen-beta.desktop" "mpv.desktop" ];
       "video/x-matroska" = [ "fr.handbrake.ghb.desktop" "mpv.desktop" ];
-      "text/plain" = [ "nvim.desktop" "obsidian.desktop"];
+      "text/plain" = [ "nvim.desktop" "obsidian.desktop" ];
       "application/json" = [ "nvim.desktop" ];
     };
   };

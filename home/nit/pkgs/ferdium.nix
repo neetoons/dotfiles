@@ -1,9 +1,9 @@
-{
-  lib,
-  fetchurl,
-  xorg,
-  stdenv,
-  pkgs,
+{ lib
+, fetchurl
+, xorg
+, stdenv
+, pkgs
+,
 }:
 
 let
@@ -11,14 +11,12 @@ let
     {
       x86_64-linux = "amd64";
       aarch64-linux = "arm64";
-    }
-    ."${stdenv.hostPlatform.system}" or (throw "Unsupported system: ${stdenv.hostPlatform.system}");
+    }."${stdenv.hostPlatform.system}" or (throw "Unsupported system: ${stdenv.hostPlatform.system}");
   hash =
     {
       amd64-linux_hash = "sha256-1jXo8MMk2EEkLo0n4ICmGJteKProLYKkMF//g63frHs=";
       arm64-linux_hash = "sha256-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=";
-    }
-    ."${arch}-linux_hash";
+    }."${arch}-linux_hash";
 
   mkFranzDerivation = pkgs.callPackage "${pkgs.path}/pkgs/applications/networking/instant-messengers/franz/generic.nix" { };
 in

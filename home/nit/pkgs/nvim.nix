@@ -1,8 +1,8 @@
-{pkgs, ...}:
+{ pkgs, ... }:
 {
-    home.packages = with pkgs; [
-        neovim
-        ripgrep
-        lua-language-server
-    ];
+  home.packages = with pkgs; [
+    neovim
+    ripgrep
+    lua-language-server
+  ];
 }

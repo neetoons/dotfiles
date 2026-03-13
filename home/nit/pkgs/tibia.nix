@@ -1,4 +1,4 @@
-{ pkgs ? import <nixpkgs> {} }:
+{ pkgs, ...}:
 
 pkgs.stdenv.mkDerivation rec {
   pname = "tibia";
@@ -45,7 +45,7 @@ pkgs.stdenv.mkDerivation rec {
     nspr
   ];
 
-installPhase = ''
+  installPhase = ''
     mkdir -p $out/bin
     mkdir -p $out/opt/tibia
     mkdir -p $out/share/applications
@@ -81,7 +81,7 @@ installPhase = ''
     [Desktop Entry]
     Name=Tibia
     Comment=Online Role Playing Game
-    Exec=env LD_LIBRARY_PATH="/home/nit/.local/share/CipSoft GmbH/Tibia/packages/Tibia/bin/lib:/home/nit/.local/share/CipSoft GmbH/Tibia/packages/Tibia/lib:\$NIX_LD_LIBRARY_PATH" "/home/nit/.local/share/CipSoft GmbH/Tibia/packages/Tibia/bin/client"
+    Exec=env LD_LIBRARY_PATH="${config.xdg.configHome}/.local/share/CipSoft GmbH/Tibia/packages/Tibia/bin/lib:${config.xdg.configHome}/.local/share/CipSoft GmbH/Tibia/packages/Tibia/lib:\$NIX_LD_LIBRARY_PATH" "${config.xdg.configHome}/.local/share/CipSoft GmbH/Tibia/packages/Tibia/bin/client"
     Icon=$out/opt/tibia/tibia.ico
     Terminal=false
     Type=Application

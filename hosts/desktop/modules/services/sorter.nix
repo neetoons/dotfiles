@@ -1,22 +1,22 @@
-{pkgs, lib, config, ...}:
+{ pkgs, lib, config, ... }:
 {
-    systemd.timers."sorter" = {
+  systemd.timers."sorter" = {
     wantedBy = [ "timers.target" ];
-        timerConfig = {
-        OnCalendar="minutely";
-        Persistent = true;
-        Unit = "sorter.service";
-        };
+    timerConfig = {
+      OnCalendar = "minutely";
+      Persistent = true;
+      Unit = "sorter.service";
     };
+  };
 
-    systemd.services."sorter" = {
-        script = ''
-            cd /home/nit/Downloads
-            ${pkgs.bash}/bin/bash $HOME/sorter.sh
-        '';
-        serviceConfig = {
-            Type = "oneshot";
-            #User = "nit"; #FIXME
-        };
+  systemd.services."sorter" = {
+    script = ''
+      cd /home/nit/Downloads
+      ${pkgs.bash}/bin/bash $HOME/sorter.sh
+    '';
+    serviceConfig = {
+      Type = "oneshot";
+      #User = "nit"; #FIXME
     };
+  };
 }

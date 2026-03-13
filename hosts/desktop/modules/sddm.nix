@@ -1,8 +1,7 @@
 { config, pkgs, ... }:
 let
-  assets = pkgs.callPackage ../../../home/nit/pkgs/assets.nix { };
-  backgroundPlaceholder = "${assets}/share/assets/wallpapers/23.png";
-  background = "${assets}/share/assets/wallpapers/2.mp4";
+  backgroundPlaceholder = "${pkgs.assets}/share/assets/wallpapers/23.png";
+  background = "${pkgs.assets}/share/assets/wallpapers/2.mp4";
   sddm-astronaut = pkgs.stdenv.mkDerivation {
     pname = "sddm-astronaut-theme";
     version = "1.0";
@@ -14,8 +13,8 @@ let
       sha256 = "sha256-+94WVxOWfVhIEiVNWwnNBRmN+d1kbZCIF10Gjorea9M=";
     };
     nativeBuildInputs = with pkgs; [
-        kdePackages.qttools
-        kdePackages.wrapQtAppsHook
+      kdePackages.qttools
+      kdePackages.wrapQtAppsHook
     ];
     installPhase = ''
       targetDir="$out/share/sddm/themes/sddm-astronaut-theme"

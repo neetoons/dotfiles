@@ -1,4 +1,4 @@
-{ pkgs ? import <nixpkgs> {}, }:
+{ pkgs, ...}:
 pkgs.buildNpmPackage rec {
   name = "discord-desktop-mobile";
   src = pkgs.fetchFromGitHub {
@@ -16,7 +16,7 @@ pkgs.buildNpmPackage rec {
   ];
 
   installPhase = ''
-    mkdir -p $out/lib/node_modules/${name} 
+    mkdir -p $out/lib/node_modules/${name}
     cp -R . $out/lib/node_modules/${name}
 
     makeWrapper ${pkgs.electron}/bin/electron $out/bin/${name} \
@@ -38,5 +38,5 @@ pkgs.buildNpmPackage rec {
   env = {
     ELECTRON_SKIP_BINARY_DOWNLOAD = 1;
   };
-    
+
 }
