@@ -34,7 +34,4 @@
       ];
     };
   };
-
-  #services.pulseaudio.package = pkgs.pulseaudioFull;
-  #services.pulseaudio.enable = true;
 }

@@ -1,4 +1,4 @@
-{ pkgs, ...}:
+{ pkgs, ... }:
 pkgs.buildNpmPackage rec {
   name = "discord-desktop-mobile";
   src = pkgs.fetchFromGitHub {

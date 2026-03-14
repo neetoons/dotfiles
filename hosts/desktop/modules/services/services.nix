@@ -4,6 +4,8 @@
     ./vscbot.nix
     ./sorter.nix
     ./clean-cache.nix
+    ./xwayland-satellite.nix
+
   ];
   services.flatpak.enable = true;
 }
