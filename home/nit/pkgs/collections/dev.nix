@@ -11,5 +11,6 @@
     bruno # probar APIs
     sqlitebrowser
     lazygit
+    tmux
   ];
 }

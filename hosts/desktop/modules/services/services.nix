@@ -2,10 +2,11 @@
   imports = [
     ./neetoons-bot.nix
     ./vscbot.nix
-    ./sorter.nix
-    ./clean-cache.nix
     ./xwayland-satellite.nix
-
   ];
-  services.flatpak.enable = true;
+
+  services = {
+      flatpak.enable = true;
+      journald.extraConfig = "SystemMaxUse=500M";
+  };
 }

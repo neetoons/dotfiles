@@ -7,6 +7,25 @@
     in
     {
       enable = true;
+      events = [
+        {
+          event = "before-sleep";
+          command = "${pkgs.procps}/bin/pkill -STOP mpvpaper; ${pkgs.systemd}/bin/systemctl --user stop gammastep;";
+        }
+        {
+          event = "unlock";
+          command = "${pkgs.procps}/bin/pkill -CONT mpvpaper; ${pkgs.systemd}/bin/systemctl --user start gammastep";
+        }
+        {
+          event = "after-resume";
+          command = "${pkgs.procps}/bin/pkill -CONT mpvpaper";
+        }
+        {
+          event = "lock";
+          command = "${pkgs.procps}/bin/pkill -STOP mpvpaper";
+        }
+      ];
+
       timeouts = [
         {
           timeout = 600; # in seconds

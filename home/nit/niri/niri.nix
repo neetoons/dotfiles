@@ -1,8 +1,4 @@
 { inputs, config, pkgs, lib, ... }:
-let
-  wallpapers = "${pkgs.assets}/share/assets/wallpapers";
-  wallpaper = "${pkgs.assets}/share/assets/wallpapers/1.jpg";
-in
 {
   programs.niri = {
     enable = true;
@@ -20,10 +16,10 @@ in
 
       gestures.hot-corners.enable = false;
 
-      #cursor = {
-      #  hide-when-typing = true;
-      #  hide-after-inactive-ms = 1000;
-      #};
+      cursor = {
+        hide-when-typing = true;
+        hide-after-inactive-ms = 1000;
+      };
 
       outputs."eDP-1" = {
         mode = {
@@ -61,13 +57,6 @@ in
           color = "#00000080";
         };
       };
-      spawn-at-startup = [
-        { command = [ "sh" "-c" "${pkgs.waypaper}/bin/waypaper --wallpaper ${wallpaper} --folder ${wallpapers}" ]; }
-        { command = [ "${pkgs.eww}/bin/eww" "-c" "${config.xdg.configHome}/eww" "open-many" "bar" ]; }
-        { command = [ "sh" "-c" "${pkgs.rclone}/bin/rclone" "mount" "nit:" "${config.xdg.configHome}/GoogleDrive" ]; }
-        { command = [ "sh" "-c" "wl-paste" "--type" "text" "--watch" "cliphist" "store" ]; }
-        { command = [ "${pkgs.pulseeffects-legacy}/bin/pulseeffects" ]; }
-      ];
 
       prefer-no-csd = true;
       screenshot-path = "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png";
@@ -86,6 +75,9 @@ in
             { app-id = "ferdium"; }
             { app-id = "thunar"; }
             { app-id = "zen-beta"; }
+            { app-id = "Alacritty"; }
+            { app-id = "pulseeffects"; }
+            { app-id = "elisa"; }
           ];
           default-column-width = { proportion = 1.0; };
         }
@@ -119,7 +111,7 @@ in
 
       binds = {
         # Aplicaciones y Comandos
-        "Mod+I".action.spawn-sh = [ "hyprlock" ];
+        "Mod+I".action.spawn-sh = [ "${pkgs.swaylock}/bin/swaylock --daemonize" ];
         #Mod+O {spawn-sh "rofi -modi 'emoji:rofimoji' -show emoji"; }
         "Mod+Shift+P".action.spawn-sh = [ "echo '' | fuzzel --dmenu | xargs -I{} xdg-open 'https://thepiratebay.org/search.php?q={}&video=on'" ];
         "Mod+1".action.spawn-sh = [ "niri msg action set-dynamic-cast-window --id $(niri msg --json pick-window | jq .id) &" ];
@@ -179,11 +171,10 @@ in
         "Mod+Ctrl+R".action.reset-window-height = { };
         "Mod+F".action.maximize-column = { };
         "Mod+M".action.fullscreen-window = { };
-        "Mod+C".action.center-column = { };
 
         # gammastep
-        "Mod+Shift+1".action.spawn-sh = [ "pkill gammastep; gammastep -m wayland -O 2500K" ];
-        "Mod+Shift+2".action.spawn-sh = [ "pkill gammastep" ];
+        "Mod+Shift+1".action.spawn-sh = [ "${pkgs.systemd}/bin/systemctl --user start gammastep" ];
+        "Mod+Shift+2".action.spawn-sh = [ "${pkgs.systemd}/bin/systemctl --user stop gammastep" ];
 
         "Mod+wheelscrollup".action.focus-column-left = { };
         "Mod+wheelscrolldown".action.focus-column-right = { };

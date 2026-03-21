@@ -4,6 +4,8 @@
     ./pkgs/packages.nix
     ./mimeapps.nix
     ./niri/niri.nix
+    ./stylix.nix
+    ./services/services.nix
   ];
 
   home.username = "nit";
@@ -26,12 +28,6 @@
   home.sessionVariables = {
     EDITOR = "${pkgs.neovim}/bin/nvim";
     TERMINAL = "${pkgs.alacritty-graphics}/bin/alacritty";
-  };
-
-  stylix = {
-    enable = true;
-    base16Scheme = "${pkgs.base16-schemes}/share/themes/catppuccin-mocha.yaml";
-    polarity = "dark";
   };
 
   programs.git = {

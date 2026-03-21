@@ -1,30 +1,29 @@
 { pkgs, ... }:
+let
+  workingDirectory = "/var/lib/discord-bots/neetoons-bot";
+in
 {
-  environment.systemPackages = [ pkgs.nodejs_latest ];
+
   systemd.services.neetoons-bot = {
     enable = true;
-    description = "Mi Discord Bot en Node.js";
+    description = "Discord Bot: Neetoons";
     after = [ "network-online.target" ];
     wants = [ "network-online.target" ];
     wantedBy = [ "multi-user.target" ];
 
-
     serviceConfig = {
-      User = "nit";
+      User = "discord-bot";
       Group = "users";
-      WorkingDirectory = "/home/nit/discord_bots/neetoons-bot/";
+      WorkingDirectory = workingDirectory;
       ExecStart = ''
         ${pkgs.nodejs_latest}/bin/node .
       '';
 
-      EnvironmentFile = "/home/nit/discord_bots/neetoons-bot/.env";
+      EnvironmentFile = "${workingDirectory}/.env";
       Restart = "on-failure";
       RestartSec = 5;
+      NoNewPrivileges = true;
+      PrivateTmp = true;
     };
-  };
-
-  users.extraUsers.neetoons-bot = {
-    isSystemUser = true;
-    group = "users";
   };
 }

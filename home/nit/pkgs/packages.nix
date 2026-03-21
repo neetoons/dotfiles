@@ -17,8 +17,12 @@ in
     ./alacritty.nix
     ./eww.nix
     ./mpv.nix
+    ./mpvpaper.nix
+    ./mangohud.nix
+    ./gammastep.nix
     ./collections/communication.nix
     ./collections/dev.nix
+    ./collections/utilities.nix
     ./collections/gaming.nix
     ./collections/gnome.nix
     ./collections/media.nix

@@ -1,29 +1,28 @@
 { pkgs, ... }:
+let
+  workingDirectory = "/var/lib/discord-bots/vscbot";
+in
 {
-  environment.systemPackages = [ pkgs.nodejs_latest ];
+
   systemd.services.vscbot = {
     enable = true;
-    description = "vscbot - discord bot";
+    description = "Discord Bot: VSCBot";
     after = [ "network-online.target" ];
     wants = [ "network-online.target" ];
     wantedBy = [ "multi-user.target" ];
 
     serviceConfig = {
-      User = "nit";
+      User = "discord-bot";
       Group = "users";
-      WorkingDirectory = "/home/nit/discord_bots/vscbot/";
+      WorkingDirectory = workingDirectory;
       ExecStart = ''
         ${pkgs.nodejs_latest}/bin/node .
       '';
-      EnvironmentFile = "/home/nit/discord_bots/vscbot/.env";
+      EnvironmentFile = "${workingDirectory}/.env";
       Restart = "on-failure";
       RestartSec = 5;
-
+      NoNewPrivileges = true;
+      PrivateTmp = true;
     };
-  };
-
-  users.extraUsers.vscbot = {
-    isSystemUser = true;
-    group = "users";
   };
 }

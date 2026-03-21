@@ -30,18 +30,13 @@
     # --- Herramientas de Terminal y Clipboard ---
     cliphist #FIXME por modular # Herramienta de historial de portapapeles para Wayland
     wl-clipboard # Herramientas de línea de comandos para manipular el portapapeles de Wayland
-
-    mpvpaper
-    waypaper
-
     # --- Captura de Pantalla y Manipulación de Imágenes (Wayland) ---
     grim # Utilidad para tomar capturas de pantalla en Wayland
     slurp # Utilidad para seleccionar una región rectangular de la pantalla en Wayland
     satty # edicion de captura
 
     # --- Audio, Media y Utilidades de Red ---
-    playerctl #FIXME por modular # Utilidad de línea de comandos para controlar reproductores de medios compatibles con MPRIS
-    gammastep #FIXME por modular # Herramienta para ajustar la temperatura de color de la pantalla según la hora del día (similar a Redshift/F.lux)
+    playerctl # Utilidad de línea de comandos para controlar reproductores de medios compatibles con MPRIS
   ];
 
   services.xserver.videoDrivers = [ "modesetting" ];
